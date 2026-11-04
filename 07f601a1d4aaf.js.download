@@ -1,0 +1,139 @@
+//15.275.0-es2019 (07f601a1d4aaf)
+(function bootGuard(projectId) {
+  var _a;
+  if (typeof window === "undefined") return;
+  var w2 = window;
+  var pid = projectId != null ? projectId : (_a = w2.CS_CONF_BASE) == null ? void 0 : _a.projectId;
+  var mobilePid = readMobilePid();
+  var reason = "";
+  if (mobilePid !== null) {
+    if (mobilePid !== String(pid)) reason = "the SDK injected tag " + mobilePid;
+  } else if (typeof w2.CS_CONF !== "undefined") {
+    reason = "another Contentsquare tag already runs";
+  }
+  if (reason) {
+    w2.CSQ_TAGS = (w2.CSQ_TAGS || []).concat(pid);
+    var tagName = ("Contentsquare tag " + (pid != null ? pid : "")).trim();
+    throw new Error(tagName + " skipped: " + reason);
+  }
+  function readMobilePid() {
+    var _a2, _b, _c;
+    const p2 = w2.CS_mobilePid || typeof ((_a2 = w2.CSJavascriptBridge) == null ? void 0 : _a2.getMobilePid) === "function" && w2.CSJavascriptBridge.getMobilePid() || ((_c = /CS_mobilePid=([^\s;]+)/.exec(((_b = w2.navigator) == null ? void 0 : _b.userAgent) || "")) == null ? void 0 : _c[1]);
+    return p2 ? String(p2) : null;
+  }
+})(144172);
+var CS_CONF={"collectionEnabled":true,"projectId":144172,"status":1,"hostnames":["anaconda.com"],"crossDomainTracking":0,"crossDomainSingleIframeTracking":0,"consentRequired":0,"allowSubdomains":1,"visitorCookieTimeout":34164000000,"sampleRate":100,"replayRecordingRate":15,"validationRate":10,"lastTrackingDraw":1737731633,"trackerDomain":"c.contentsquare.net","recordingDomain":"r.contentsquare.net","useMalkaPipeline":1,"ed":"l.contentsquare.net/log/web","eMerchandisingEnabled":0,"mouseMoveHeatmapEnabled":1,"jsErrorsEnabled":1,"customErrorsEnabled":0,"jsCustomErrorsEnabled":0,"apiErrorsEnabled":1,"customHashIdEnabled":0,"recordingEncryptionEnabled":0,"recordingEncryptionPublicKey":null,"recordingEncryptionPublicKeyId":0,"secureCookiesEnabled":0,"triggerSessionReplayEnabled":0,"triggerSessionReplayRegex":null,"dynamicIdRegex":null,"whitelistedAttributes":null,"replayRecordingUnmaskedUrlRegex":null,"replayRecordingUnmaskedUrlRegexRules":[],"replayRecordingMaskedUrlRegexRules":[],"replayRecordingMaskedUrlRegex":null,"anonymisationMethod":null,"tagDeploymentMode":"CONTENTSQUARE","experimental":null,"iframesTracking":0,"textVisibilityEnabled":0,"cookielessTrackingEnabled":0,"malkaUrlEnabled":0,"malkaEtrEnabled":0,"pathComputationRules":{},"asyncSerializerEnabled":1,"pendingInactivityTimeout":5000,"accessibilityEnabled":0,"uxaDomain":"app.contentsquare.com","webviewsTrackingEnabled":0,"useStaticResourceManager":1,"performanceTimingOptions":{"withResource":false,"withNavigation":false},"replayConsentRequiredForSession":0,"eventsApiEnabled":0,"clickedElementTextEnabled":1,"collectHierarchy":0,"collectSubmit":0,"collectTargetText":1,"apiErrors":{"collectStandardHeaders":0,"collectionRules":[{"bodyAttributePaths":[],"collectQueryParam":0,"collectRequestBody":0,"collectResponseBody":0,"customHeaders":[{"headerName":"cf-cache-status","encrypted":0,"type":"response"},{"headerName":"cf-ray","encrypted":0,"type":"request-response"},{"headerName":"x-cache-enabled","encrypted":0,"type":"response"},{"headerName":"x-cache","encrypted":0,"type":"response"},{"headerName":"x-amz-cf-id","encrypted":0,"type":"request-response"},{"headerName":"x-ray","encrypted":0,"type":"response"},{"headerName":"upgrade","encrypted":0,"type":"request-response"},{"headerName":"X-Request-Id","encrypted":0,"type":"request-response"},{"headerName":"x-wix-request-id","encrypted":0,"type":"response"},{"headerName":"X-Pass-Why","encrypted":0,"type":"response"},{"headerName":"x-nginx-cache-status","encrypted":0,"type":"response"},{"headerName":"trace-id","encrypted":0,"type":"request-response"},{"headerName":"traceparent","encrypted":0,"type":"request-response"},{"headerName":"X-NewRelic-Transaction","encrypted":0,"type":"response"},{"headerName":"X-Datadog-Trace-ID","encrypted":0,"type":"request"}]},{"bodyAttributePaths":[],"collectQueryParam":0,"collectRequestBody":0,"collectResponseBody":0,"customHeaders":[{"headerName":"cf-cache-status","encrypted":0,"type":"response"},{"headerName":"cf-ray","encrypted":0,"type":"request-response"},{"headerName":"x-cache-enabled","encrypted":0,"type":"response"},{"headerName":"x-cache","encrypted":0,"type":"response"},{"headerName":"x-amz-cf-id","encrypted":0,"type":"request-response"},{"headerName":"x-ray","encrypted":0,"type":"response"},{"headerName":"upgrade","encrypted":0,"type":"request-response"},{"headerName":"X-Request-Id","encrypted":0,"type":"request-response"},{"headerName":"x-wix-request-id","encrypted":0,"type":"response"},{"headerName":"X-Pass-Why","encrypted":0,"type":"response"},{"headerName":"x-nginx-cache-status","encrypted":0,"type":"response"},{"headerName":"trace-id","encrypted":0,"type":"request-response"},{"headerName":"traceparent","encrypted":0,"type":"request-response"},{"headerName":"X-NewRelic-Transaction","encrypted":0,"type":"response"},{"headerName":"X-Datadog-Trace-ID","encrypted":0,"type":"request"}]},{"bodyAttributePaths":[{"path":"errors[0].message","encrypted":0,"primary":0,"type":"response"}],"collectQueryParam":0,"collectRequestBody":0,"collectResponseBody":0,"customHeaders":[{"headerName":"cf-cache-status","encrypted":0,"type":"response"},{"headerName":"cf-ray","encrypted":0,"type":"request-response"},{"headerName":"x-cache-enabled","encrypted":0,"type":"response"},{"headerName":"x-cache","encrypted":0,"type":"response"},{"headerName":"x-amz-cf-id","encrypted":0,"type":"request-response"},{"headerName":"x-ray","encrypted":0,"type":"response"},{"headerName":"upgrade","encrypted":0,"type":"request-response"},{"headerName":"X-Request-Id","encrypted":0,"type":"request-response"},{"headerName":"x-wix-request-id","encrypted":0,"type":"response"},{"headerName":"X-Pass-Why","encrypted":0,"type":"response"},{"headerName":"x-nginx-cache-status","encrypted":0,"type":"response"},{"headerName":"trace-id","encrypted":0,"type":"request-response"},{"headerName":"traceparent","encrypted":0,"type":"request-response"},{"headerName":"X-NewRelic-Transaction","encrypted":0,"type":"response"},{"headerName":"X-Datadog-Trace-ID","encrypted":0,"type":"request"}],"url":"graphql","statusCode":200,"bodyContent":"errors\":"},{"bodyAttributePaths":[{"path":"errors[0].message","encrypted":0,"primary":0,"type":"response"}],"collectQueryParam":0,"collectRequestBody":0,"collectResponseBody":0,"customHeaders":[{"headerName":"cf-cache-status","encrypted":0,"type":"response"},{"headerName":"cf-ray","encrypted":0,"type":"request-response"},{"headerName":"x-cache-enabled","encrypted":0,"type":"response"},{"headerName":"x-cache","encrypted":0,"type":"response"},{"headerName":"x-amz-cf-id","encrypted":0,"type":"request-response"},{"headerName":"x-ray","encrypted":0,"type":"response"},{"headerName":"upgrade","encrypted":0,"type":"request-response"},{"headerName":"X-Request-Id","encrypted":0,"type":"request-response"},{"headerName":"x-wix-request-id","encrypted":0,"type":"response"},{"headerName":"X-Pass-Why","encrypted":0,"type":"response"},{"headerName":"x-nginx-cache-status","encrypted":0,"type":"response"},{"headerName":"trace-id","encrypted":0,"type":"request-response"},{"headerName":"traceparent","encrypted":0,"type":"request-response"},{"headerName":"X-NewRelic-Transaction","encrypted":0,"type":"response"},{"headerName":"X-Datadog-Trace-ID","encrypted":0,"type":"request"}],"url":"graphql","statusCode":200,"bodyContent":"errors\":"}]},"displayAdOptions":null,"taskSchedulerOptions":{"enabled":1},"malkaQuotaServiceDomain":"q-aus1.contentsquare.net","malkaRecordingDomain":"k-aus1.contentsquare.net","staticResourceManagerDomain":"srm.bf.contentsquare.net","voc":{"siteId":null,"enabled":0},"heapEnvironment":{"env_id":"758475466","heap_tag_status":"heap_sideloads_cs"},"implementations":[{"template":{"name":"BlockAllowListForSr","args":{"type":"allow","urls":"www.anaconda.com,www.anaconda.com/products,www.anaconda.com/products/data-science-ai-workbench,www.anaconda.com/download,www.anaconda.com/products/cloud-suite,www.anaconda.com/products/excel-toolbox,www.anaconda.com/products/package-security-manager,www.anaconda.com/products/dashboards,www.anaconda.com/products/application-deployment,www.anaconda.com/products/ai-launcher,www.anaconda.com/products/data-and-models,www.anaconda.com/products/high-performance-python,www.anaconda.com/products/notebooks,learning.anaconda.com/collections,www.anaconda.com/docs"}},"triggers":[{"name":"BeforePageView","args":{"pageviewTypes":["natural","artificial"]}}]}],"anonymizeDigits":null,"dynamicConfDomain":"t.contentsquare.net/settings","tagVerificationDomain":"tcvsapi.contentsquare.com","startMode":1,"isLegacyHJ":false,"maskMedia":false,"experiments":{"list":[],"geo":{"country":"KE"}},"tagVerificationEnabled":true,"trackingCodeVerified":true,"useBootstrapFile":true,"urlBlacklist":null};
+CS_CONF.tagHost=(function(s){var h=/^[a-z][a-z0-9+.-]*:\/\/([^\/?#:]+)/i.exec(s);h=h?h[1].toLowerCase():"";return /(^|\.)contentsquare\.net$/.test(h)?"contentsquare":/(^|\.)clicktale\.net$/.test(h)?"clicktale":"self"})((self.document&&document.currentScript||{}).src||"");
+function injectTag(stable, candidate, share) {
+  if (typeof CS_CONF === "undefined") {
+    return;
+  }
+  const d2 = document;
+  const logUrl = `https://${CS_CONF.ed}`;
+  const pid = CS_CONF.projectId;
+  const w2 = window;
+  const injectedPids = w2.CS_TAG_PIDS = w2.CS_TAG_PIDS || {};
+  const injected = injectedPids[String(pid)];
+  if (injected) {
+    if (injected !== 1) CS_CONF.rollout = injected.rollout;
+    return;
+  }
+  const n2 = navigator;
+  const isBot = n2.webdriver === true || /bot[/;-]|\bbot\b|spider|crawl|slurp|headlesschrome|lighthouse|prerender|google-inspectiontool|facebookexternalhit|mediapartners/i.test(
+    n2.userAgent || ""
+  );
+  const rollout = candidate && share && !isBot ? { arm: Math.random() < share ? "candidate" : "stable", share } : null;
+  CS_CONF.rollout = rollout;
+  injectedPids[String(pid)] = { rollout };
+  function log2(message2, level = "critical") {
+    const page = location.origin + location.pathname;
+    const msg = `${logUrl}?a=uxa&l=${level}&m=${encodeURIComponent(message2)}&pid=${pid}&p=${encodeURIComponent(page)}`;
+    fetch(msg, { mode: "cors", credentials: "omit", keepalive: true }).catch(
+      () => {
+        const image = new Image();
+        image.crossOrigin = "anonymous";
+        image.src = msg;
+      }
+    );
+  }
+  const currentScript = document.currentScript;
+  const hjHosts = ["static-integration.hotjar.com", "static.hotjar.com"];
+  const scriptHost = (currentScript == null ? void 0 : currentScript.src) ? new URL(currentScript.src, location.href).hostname : "";
+  const hjHost = hjHosts.find((host) => host === scriptHost);
+  const origin = hjHost ? `https://${hjHost}` : "https://t.contentsquare.net";
+  const path2 = (rollout == null ? void 0 : rollout.arm) === "candidate" && candidate ? candidate : stable;
+  const expectedSrc = new URL(`${origin}/${path2}`).href;
+  const element = d2.createElement("script");
+  let stopped = false;
+  let errorTimer;
+  const observer = new MutationObserver((records) => checkAttributes(records));
+  function cleanup() {
+    stopped = true;
+    clearTimeout(errorTimer);
+    observer.disconnect();
+    d2.removeEventListener("securitypolicyviolation", onCsp);
+    element.onload = null;
+    element.onerror = null;
+  }
+  function report(cause) {
+    log2(`Bootstrap error: ${cause}`);
+  }
+  function checkAttributes(records = observer.takeRecords()) {
+    if (stopped) return true;
+    for (const attribute of ["src", "type"]) {
+      const expected = attribute === "src" ? expectedSrc : null;
+      const observed = element.getAttribute(attribute);
+      if (attribute === "src" && element.src !== expectedSrc || observed !== expected || records.some(
+        (record) => record.attributeName === attribute && record.oldValue !== expected
+      )) {
+        cleanup();
+        report(`${attribute} changed observed=${JSON.stringify(observed)}`);
+        return true;
+      }
+    }
+    return false;
+  }
+  function onCsp(event) {
+    if (stopped || !event.isTrusted || event.disposition !== "enforce" || !["script-src", "script-src-elem"].includes(event.effectiveDirective) || event.blockedURI !== expectedSrc && !(event.target === element && event.blockedURI === origin)) {
+      return;
+    }
+    if (checkAttributes()) return;
+    cleanup();
+    report(
+      `csp blocked directive=${event.effectiveDirective} blockedURI=${event.blockedURI}`
+    );
+  }
+  d2.addEventListener("securitypolicyviolation", onCsp);
+  element.onload = () => {
+    if (!checkAttributes()) cleanup();
+  };
+  element.onerror = () => {
+    if (checkAttributes() || errorTimer !== void 0) return;
+    errorTimer = setTimeout(() => {
+      if (checkAttributes()) return;
+      cleanup();
+      report("others");
+    }, 0);
+  };
+  try {
+    element.src = expectedSrc;
+    element.async = true;
+    element.fetchPriority = "high";
+    element.crossOrigin = "anonymous";
+    if (!checkAttributes()) {
+      observer.observe(element, {
+        attributes: true,
+        attributeFilter: ["src", "type"],
+        attributeOldValue: true
+      });
+    }
+    (d2.head || d2.documentElement).appendChild(element);
+    checkAttributes();
+  } catch (error2) {
+    cleanup();
+    throw error2;
+  }
+}
+injectTag("releases/15.275.0/es2019/1701104-430940e9.js");
+
+// signature-34ffc0b8a5b96fd8c8088c63a203f2fa5ea553e89209551a8946501765c8545d
